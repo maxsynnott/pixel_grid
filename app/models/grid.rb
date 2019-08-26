@@ -1,0 +1,2 @@
+class Grid < ApplicationRecord
+end
