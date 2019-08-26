@@ -6,5 +6,6 @@ class GridsController < ApplicationController
   end
 
   def show
+    @grid = Grid.find(params[:id])
   end
 end
