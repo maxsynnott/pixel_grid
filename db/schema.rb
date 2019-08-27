@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_111930) do
+ActiveRecord::Schema.define(version: 2019_08_27_221040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_08_27_111930) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "pixel_size"
+    t.integer "pixel_array", default: [], array: true
   end
 
   create_table "placements", force: :cascade do |t|
