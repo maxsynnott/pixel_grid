@@ -1,1 +1,4 @@
-<canvas id="grid" height="<%= @grid.height %>", width="<%= @grid.width %>" data-placements="<%= @grid.placements.to_json %>" data-pixel-size="<%= @grid.pixel_size %>"></canvas>
+<script src='https://unpkg.com/panzoom@8.0.0/dist/panzoom.min.js'></script>
+<div id="stage">
+  <canvas id="grid" height="<%= @grid.height %>" , width="<%= @grid.width %>" data-placements="<%= @grid.placements.to_json %>" data-pixel-size="<%= @grid.pixel_size %>"></canvas>
+</div>
