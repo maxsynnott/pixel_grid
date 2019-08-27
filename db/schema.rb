@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_174250) do
+ActiveRecord::Schema.define(version: 2019_08_27_111930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,22 +23,15 @@ ActiveRecord::Schema.define(version: 2019_08_26_174250) do
     t.integer "pixel_size"
   end
 
-  create_table "pixels", force: :cascade do |t|
-    t.integer "x"
-    t.integer "y"
-    t.bigint "grid_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["grid_id"], name: "index_pixels_on_grid_id"
-  end
-
   create_table "placements", force: :cascade do |t|
     t.string "color"
     t.bigint "user_id"
-    t.bigint "pixel_id"
+    t.bigint "grid_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pixel_id"], name: "index_placements_on_pixel_id"
+    t.integer "x"
+    t.integer "y"
+    t.index ["grid_id"], name: "index_placements_on_grid_id"
     t.index ["user_id"], name: "index_placements_on_user_id"
   end
 
@@ -54,7 +47,6 @@ ActiveRecord::Schema.define(version: 2019_08_26_174250) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "pixels", "grids"
-  add_foreign_key "placements", "pixels"
+  add_foreign_key "placements", "grids"
   add_foreign_key "placements", "users"
 end

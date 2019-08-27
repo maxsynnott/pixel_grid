@@ -1,5 +1,5 @@
 class Grid < ApplicationRecord
-  has_many :pixels, dependent: :destroy
+  has_many :placements, dependent: :destroy
 
   validates :height, presence: true, numericality: { only_integer: true }
   validates :width, presence: true, numericality: { only_integer: true }
