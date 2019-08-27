@@ -2,12 +2,11 @@ const initGrid = () => {
   let canvas = document.getElementById('grid');
   if (canvas.getContext) {
     let ctx = canvas.getContext('2d');
-    // Grabs data stored in the canvas tag
-    let pixelArray = JSON.parse(canvas.dataset.pixelArray);
-    pixelArray = Uint8ClampedArray.from(pixelArray);
-    console.log(pixelArray);
-    let gridImage = new ImageData(pixelArray, 1000, 1000);
-    ctx.putImageData(gridImage, 0, 0);
+    // Avoided setting to variables as an attempt to speed process up.
+    // I want to test speed dif using an api to grab the 4mb of data
+    let pixelData = new ImageData(Uint8ClampedArray.from(JSON.parse(canvas.dataset.pixelArray)),
+                                  canvas.width, canvas.height);
+    ctx.putImageData(pixelData, 0, 0);
   } else {
     // Code to run when canvas is unsupported
   };
