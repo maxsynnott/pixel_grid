@@ -28,10 +28,6 @@ function getMousePos(canvas, evt) {
 var canvas = document.getElementById('grid');
 var context = canvas.getContext('2d');
 
-const getGridPos = () => {
-
-};
-
 canvas.addEventListener('mousemove', function(evt) {
   var a = stage.style.transform;
   var b = a.substring(7);
