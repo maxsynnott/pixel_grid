@@ -1,9 +1,9 @@
 const initGrid = () => {
   // Grabs the canvas element
   let canvas = document.getElementById('grid');
+  let ctx = canvas.getContext('2d');
   if (canvas.getContext) {
     // ctx is what we use to interact with the canvas
-    let ctx = canvas.getContext('2d');
     // Extracts and parses the pixelArray passed through the HTML dataset in show
     // Probably should change this to an API/fetch request
     let pixelArray = JSON.parse(canvas.dataset.pixelArray)
@@ -18,4 +18,11 @@ const initGrid = () => {
   };
 };
 
+
+
+
+
 export { initGrid };
+
+// var dbgCanvasCoords = "Canvas coords:" + '\n' + "Zoom:" + d[0] + '\n' + "X:" + d[4] + '\n' + "Y:" + d[5];
+// var dbgMouseCoords = 'Mouse coords: ' + '\n' + "X:" + mousePos.x + '\n' + "Y:" + mousePos.y + "\n" + "Real X:" + Math.floor(mousePos.x / d[0]) + "\n" + "Real Y:" + Math.floor(mousePos.y / d[0]);

@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module PixelGrid
   class Application < Rails::Application
+    config.middleware.use Rack::Deflater
     config.generators do |generate|
           generate.assets false
           generate.helper false
