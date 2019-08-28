@@ -1,6 +1,6 @@
 import "bootstrap";
-import panzoom from "panzoom";
 import { initGrid } from '../modules/init_grid';
+import { initStage } from '../modules/init_stage';
 initGrid();
-var theStage = document.querySelector('#stage');
-panzoom(theStage);
+initStage();
+
