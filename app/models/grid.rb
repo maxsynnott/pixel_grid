@@ -14,4 +14,11 @@ class Grid < ApplicationRecord
     end
     save!
   end
+
+  def update_pixel(x, y, rgba)
+    start_index = 4 * (y * width + x)
+    (0..3).each { |i| pixel_array[start_index + i] = rgba[i] }
+    # It reaches here instantly however the save takes a couple seconds
+    save!
+  end
 end
