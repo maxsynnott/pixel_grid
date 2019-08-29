@@ -4,6 +4,10 @@ class Message < ApplicationRecord
   belongs_to :user
   validates :content, presence: true, allow_blank: false
 
+  def from?(some_user)
+    user == some_user
+  end
+
   def broadcast_message
     ActionCable.server.broadcast("chat_room_#{chat_room.id}", {
       message_partial: ApplicationController.renderer.render(
