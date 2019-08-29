@@ -24,10 +24,14 @@ ActiveRecord::Schema.define(version: 2019_08_29_134450) do
     t.integer "pixel_array", default: [], array: true
   end
 
-  create_table "messages", force: :cascade do |t|
+    create_table "messages", force: :cascade do |t|
     t.string "content"
+    t.bigint "chat_room_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -55,6 +59,11 @@ ActiveRecord::Schema.define(version: 2019_08_29_134450) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -63,4 +72,6 @@ ActiveRecord::Schema.define(version: 2019_08_29_134450) do
 
   add_foreign_key "placements", "grids"
   add_foreign_key "placements", "users"
+  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "users"
 end
