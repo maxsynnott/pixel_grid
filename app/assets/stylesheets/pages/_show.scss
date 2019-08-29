@@ -22,3 +22,81 @@ margin: 30px;
 bottom: 0;
 left: 0;
 }
+
+.cols-container {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+}
+
+.cols-container > div {
+    height: 5vh;
+    width: 2.5vw;
+}
+
+#white {
+  background-color:rgba(255, 255, 255, 1);
+}
+#dkgrey {
+  background-color:rgba(87, 87, 87, 1);
+}
+#red {
+  background-color:rgba(173, 35, 35, 1);
+}
+
+#blue {
+  background-color:rgba(42, 75, 215, 1);
+}
+
+#green {
+  background-color:rgba(29, 105, 20, 1);
+}
+
+#brown {
+  background-color:rgba(129, 74, 25, 1);
+}
+
+#purple {
+  background-color:rgba(129, 38, 192, 1);
+}
+
+#ltgrey {
+  background-color:rgba(160, 160, 160, 1);
+}
+
+#ltgreen {
+  background-color:rgba(129, 197, 122, 1);
+}
+
+#ltblue {
+  background-color:rgba(157, 175, 255, 1);
+}
+
+#cyan {
+  background-color:rgba(41, 208, 208, 1);
+}
+
+#orange {
+  background-color:rgba(255, 146, 51, 1);
+}
+
+#yellow {
+  background-color:rgba(255, 238, 51, 1);
+}
+
+#tan {
+  background-color:rgba(233, 222, 187, 1);
+}
+
+#pink {
+  background-color:rgba(255, 205, 243, 1);
+}
+
+#black {
+  background-color:rgba(0, 0, 0, 1);
+}
