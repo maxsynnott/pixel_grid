@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_221040) do
+ActiveRecord::Schema.define(version: 2019_08_29_134450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 2019_08_27_221040) do
     t.integer "pixel_array", default: [], array: true
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "sku"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "placements", force: :cascade do |t|
     t.string "color"
     t.bigint "user_id"
@@ -32,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_08_27_221040) do
     t.datetime "updated_at", null: false
     t.integer "x"
     t.integer "y"
+    t.string "sku", null: false
     t.index ["grid_id"], name: "index_placements_on_grid_id"
     t.index ["user_id"], name: "index_placements_on_user_id"
   end
