@@ -9,5 +9,3 @@ class GridsController < ApplicationController
     @grid = Grid.find(params[:id])
   end
 end
-
-# trigger heroku update please
