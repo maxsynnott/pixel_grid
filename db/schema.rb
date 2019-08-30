@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_123253) do
+ActiveRecord::Schema.define(version: 2019_08_30_091307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_08_29_123253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "pixel_size"
-    t.bit "pixel_bits", limit: 4000000
+    t.bit_varying "pixel_bits", limit: 4000000
   end
 
   create_table "placements", force: :cascade do |t|
