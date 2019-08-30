@@ -1,20 +1,32 @@
+@import "components/grid-colors";
+
 body {
   overflow: hidden;
 }
 
 canvas {
-  image-rendering: optimizeSpeed;             /* Older versions of FF          */
-  image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
-  image-rendering: -webkit-optimize-contrast; /* Safari                        */
-  image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
-  image-rendering: pixelated;                 /* Awesome future-browsers       */
-  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: optimizeSpeed !important;             /* Older versions of FF          */
+  image-rendering: -moz-crisp-edges !important;          /* FF 6.0+                       */
+  image-rendering: -webkit-optimize-contrast !important; /* Safari                        */
+  image-rendering: -o-crisp-edges !important;            /* OS X & Windows Opera (12.02+) */
+  image-rendering: pixelated !important;                 /* Awesome future-browsers       */
+  -ms-interpolation-mode: nearest-neighbor !important;
+  grid-area:c;
+  cursor: crosshair;
 }
 
 .navbar-lewagon {
     z-index: 10;
 }
-
+#stage {
+  height:100vh;
+  width:100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: ". . ." ". c ." ". . .";
+  transform-origin: 50% 50% 0px !important;
+}
 
 #reset-zoom {
 position:fixed;
@@ -27,76 +39,109 @@ left: 0;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
+  /* grid-template-rows: 1fr; */
   position: absolute;
-  bottom: 0;
-  left: 0;
-  margin: 0;
+  bottom: 20px;
+  left: 20px;
+  /* margin: 0; */
+  cursor: crosshair;
+  background-color: white;
+  border: 3px white solid;
+  grid-gap: 3px;
+  height: 300px;
+  width: 300px;
+    #white {
+      background-color: $g-white;
+    }
+    #dkgrey {
+    background-color:$g-dkgrey;
+    }
+    #red {
+      background-color:$g-red;
+    }
+
+    #blue {
+      background-color:$g-blue;
+    }
+
+    #green {
+      background-color:$g-green;
+    }
+
+    #brown {
+      background-color:$g-brown;
+    }
+
+    #purple {
+      background-color:$g-purple;
+    }
+
+    #ltgrey {
+      background-color:$g-ltgrey;
+    }
+
+    #ltgreen {
+      background-color:$g-ltgreen;
+    }
+
+    #ltblue {
+      background-color:$g-ltblue;
+    }
+
+    #cyan {
+      background-color:$g-cyan;
+    }
+
+    #orange {
+      background-color:$g-orange;
+    }
+
+    #yellow {
+      background-color:$g-yellow;
+    }
+
+    #tan {
+      background-color:$g-tan;
+    }
+
+    #pink {
+      background-color:$g-pink;
+    }
+
+    #black {
+      background-color:$g-black;
+    }
 }
 
 .cols-container > div {
-    height: 5vh;
-    width: 2.5vw;
+    height: 100%;
+    width: 100%;
+    transition: all .2s ease-in-out;
+    &:hover {
+    transform:scale(1.1);
+    box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.3), 0px 1px 12px rgba(0, 0, 0, 0.10);
+  }
 }
 
-#white {
-  background-color:rgba(255, 255, 255, 1);
-}
-#dkgrey {
-  background-color:rgba(87, 87, 87, 1);
-}
-#red {
-  background-color:rgba(173, 35, 35, 1);
+
+
+@media screen and (max-width: 1024px) {
+  .cols-container {
+    height: 200px;
+    width: 200px;
+  }
 }
 
-#blue {
-  background-color:rgba(42, 75, 215, 1);
-}
 
-#green {
-  background-color:rgba(29, 105, 20, 1);
-}
 
-#brown {
-  background-color:rgba(129, 74, 25, 1);
-}
 
-#purple {
-  background-color:rgba(129, 38, 192, 1);
-}
 
-#ltgrey {
-  background-color:rgba(160, 160, 160, 1);
-}
-
-#ltgreen {
-  background-color:rgba(129, 197, 122, 1);
-}
-
-#ltblue {
-  background-color:rgba(157, 175, 255, 1);
-}
-
-#cyan {
-  background-color:rgba(41, 208, 208, 1);
-}
-
-#orange {
-  background-color:rgba(255, 146, 51, 1);
-}
-
-#yellow {
-  background-color:rgba(255, 238, 51, 1);
-}
-
-#tan {
-  background-color:rgba(233, 222, 187, 1);
-}
-
-#pink {
-  background-color:rgba(255, 205, 243, 1);
-}
-
-#black {
-  background-color:rgba(0, 0, 0, 1);
+// The secret life of arabia.
+.speen {
+    -webkit-animation:spin 30s linear infinite;
+    -moz-animation:spin 30s linear infinite;
+    animation:spin 30s linear infinite;
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 }
