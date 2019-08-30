@@ -36,8 +36,7 @@ function initClicker() {
     console.log(colour);
     ctx.fillStyle = colour;
     ctx.fillRect(coordsX, coordsY, 1, 1);
-
-
+    // Implement a way to create placement here
   }, false);
 }
 
