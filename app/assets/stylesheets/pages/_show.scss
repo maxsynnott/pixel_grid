@@ -21,11 +21,12 @@ canvas {
 #stage {
   height:100vh;
   width:100vw;
-  display: grid;
+  // display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas: ". . ." ". c ." ". . .";
-  transform-origin: 50% 50% 0px !important;
+  // transform-origin: 50% 50% 0px !important;
+  text-align: center;
 }
 
 #reset-zoom {
