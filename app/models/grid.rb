@@ -4,6 +4,8 @@ class Grid < ApplicationRecord
   validates :height, presence: true, numericality: { only_integer: true }
   validates :width, presence: true, numericality: { only_integer: true }
 
+  before_create :fill_bits
+
   # Method for testing purposes, call .populate on a grid instance to populate
   # it with random coloured pixels.
   def populate
@@ -13,5 +15,12 @@ class Grid < ApplicationRecord
     (width * height).times { bit_string << "%04b" % rand(15) }
     self.pixel_bits = bit_string
     save!
+  end
+
+  private
+
+  def fill_bits
+    self.pixel_bits = ""
+    (width * height).times { pixel_bits << "0000" }
   end
 end
