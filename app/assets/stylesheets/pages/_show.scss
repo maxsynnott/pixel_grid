@@ -11,7 +11,6 @@ canvas {
   image-rendering: -o-crisp-edges !important;            /* OS X & Windows Opera (12.02+) */
   image-rendering: pixelated !important;                 /* Awesome future-browsers       */
   -ms-interpolation-mode: nearest-neighbor !important;
-  grid-area:c;
   cursor: crosshair;
 }
 
@@ -21,20 +20,14 @@ canvas {
 #stage {
   height:100vh;
   width:100vw;
-  // display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas: ". . ." ". c ." ". . .";
-  // transform-origin: 50% 50% 0px !important;
-  text-align: center;
 }
 
-#reset-zoom {
-position:fixed;
-margin: 30px;
-bottom: 0;
-left: 0;
-}
+// #reset-zoom {
+// position:fixed;
+// margin: 30px;
+// bottom: 0;
+// left: 0;
+// }
 
 .cols-container {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
@@ -125,17 +118,12 @@ left: 0;
 }
 
 
-
 @media screen and (max-width: 1024px) {
   .cols-container {
     height: 200px;
     width: 200px;
   }
 }
-
-
-
-
 
 // The secret life of arabia.
 .speen {
