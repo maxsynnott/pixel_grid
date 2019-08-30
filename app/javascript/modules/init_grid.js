@@ -34,6 +34,10 @@ const initGrid = () => {
     let clampedPixelArray = Uint8ClampedArray.from(pixelArray)
     let pixelGridData = new ImageData(clampedPixelArray, canvas.width, canvas.height);
     // Paint the pixelGridData to the canvas
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.webkitImageSmoothingEnabled = false;
+    ctx.msImageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = false;
     ctx.putImageData(pixelGridData, 0, 0);
   } else {
     // Code to run when canvas is unsupported
@@ -41,3 +45,5 @@ const initGrid = () => {
 };
 
 export { initGrid };
+
+

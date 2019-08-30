@@ -3,6 +3,7 @@ function initClicker() {
   let cols = document.querySelector(".cols-container");
   let canvas = document.getElementById('grid');
   let ctx = canvas.getContext('2d');
+  //class="speen"
 
   // getting the mouse coordinates.
   function getMousePos(canvas, evt) {
@@ -24,7 +25,7 @@ function initClicker() {
   // On each mousedown we get the css transform property of the canvas and divide
   // the perceived coordinates by the zoom amount to get pixel accurate position.
   canvas.addEventListener('mousedown', function(evt) {
-    var a = stage.style.transform;
+    var a = canvas.style.transform;
     var b = a.substring(7);
     var c = b.slice(0, -1);
     var d = c.split(',');
@@ -36,9 +37,20 @@ function initClicker() {
     console.log(colour);
     ctx.fillStyle = colour;
     ctx.fillRect(coordsX, coordsY, 1, 1);
-
-
   }, false);
+
+
+  // begin meme
+  document.addEventListener('keydown', (event) => {
+    const keyName = event.key;
+    if (keyName === "`") {
+      // do not alert when only Control key is pressed.
+      document.querySelector("#stage").className = "speen";
+    }
+  });
+  // end meme
+
 }
+
 
 export { initClicker };
