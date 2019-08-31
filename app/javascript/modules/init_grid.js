@@ -1,7 +1,5 @@
 const initGrid = () => {
   // Grabs the canvas element
-  let canvas = document.getElementById('grid');
-  let ctx = canvas.getContext('2d');
   if (canvas.getContext) {
     // Color values
     const rgbas = {0: [255, 255, 255, 255],
