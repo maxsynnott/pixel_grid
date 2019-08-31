@@ -1,11 +1,10 @@
 import panzoom from "panzoom";
 
 function initStage() {
-  let grid = document.querySelector('#grid');
-  let zoom = (window.innerHeight - 66) * 0.9 / grid.height;
-panzoom(grid, { maxZoom: 75, minZoom: 0.6, zoomSpeed: 0.035 }).zoomAbs(
-  (grid.width * zoom) / 2, // initial x position
-  (grid.height * zoom) / 3, // initial y position CHANGE THIS!!!!!!!!!!!! TAKE INTO ACCOUNT NAVBAR HEIGHT
+  let zoom = (window.innerHeight - 66) * 0.9 / canvas.height;
+panzoom(canvas, { maxZoom: 75, minZoom: 0.6, zoomSpeed: 0.035 }).zoomAbs(
+  (canvas.width * zoom) / 2, // initial x position
+  (canvas.height * zoom) / 3, // initial y position CHANGE THIS!!!!!!!!!!!! TAKE INTO ACCOUNT NAVBAR HEIGHT
   zoom // initial zoom
    );
 };
