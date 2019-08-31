@@ -1,0 +1,8 @@
+<div class="message-container" style="height: 200px with:200px">
+  <h1>Here are the messages</h1>
+</div>
+<%= simple_form_for @message, remote: true do |f| %>
+  <%= f.input_field :content, placeholder: "Write your message" %>
+  <%= f.submit "Send!" %>
+<% end %>
+

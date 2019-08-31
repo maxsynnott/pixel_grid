@@ -6,10 +6,10 @@ import { initStage } from '../modules/init_stage';
 import { initColsPicker } from '../modules/init_colspicker';
 import { initClicker } from '../modules/init_clicker';
 
-initGrid();
-initStage();
+// initGrid();
+// initStage();
 // initTracker();
-initColsPicker();
-initClicker();
+// initColsPicker();
+// initClicker();
 
 

@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :grids, only: [:show]
+  resources :messages, only: [:new, :create]
+
 end
