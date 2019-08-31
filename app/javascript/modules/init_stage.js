@@ -1,16 +1,19 @@
 import panzoom from "panzoom";
 
 function initStage() {
-  let zoom = (window.innerHeight - 66) * 0.9 / canvas.height;
-panzoom(canvas, { maxZoom: 75, minZoom: 0.6, zoomSpeed: 0.035 }).zoomAbs(
-  (canvas.width * zoom) / 2, // initial x position
-  (canvas.height * zoom) / 3, // initial y position CHANGE THIS!!!!!!!!!!!! TAKE INTO ACCOUNT NAVBAR HEIGHT
-  zoom // initial zoom
-   );
+  const navbar = document.querySelector(".navbar");
+  // Later need to change zoom formula to adapt to very wide grids
+  let initialZoom = (window.innerHeight - navbar.offsetHeight) * 0.9 / canvas.height;
+  // Nice and simple to keep it high on the screen, could change this later
+  canvas.style.top = `${navbar.offsetHeight / 2}px`
+  // Pretty sure this is right
+  canvas.style.left = `${((window.innerWidth / 2) - (canvas.width / 2 * initialZoom))}px`;
+  panzoom(canvas, { maxZoom: 75, minZoom: 0.6, zoomSpeed: 0.035 }).zoomAbs(
+    0,
+    0,
+    initialZoom
+    );
+  canvas.style.display = "block";
 };
-//canvas.width * 2
-//window.innerHeight * zoom
 
 export { initStage };
-
-//((viewHeight - 66px) * 0.9 ) / canv height.
