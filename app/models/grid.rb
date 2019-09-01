@@ -17,6 +17,14 @@ class Grid < ApplicationRecord
     save!
   end
 
+  def update_pixel(x, y, bit_string)
+    # This can be used to update and save any pixel on the grid to any color
+    start_index = (width * y + x) * 4
+    pixel_bits_will_change!
+    pixel_bits[start_index..(start_index + 3)] = bit_string
+    save!
+  end
+
   private
 
   def fill_bits
