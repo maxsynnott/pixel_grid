@@ -6,6 +6,8 @@ function initClicker() {
   document.addEventListener('mouseup', (evt) => {
     if (click) {
       // converts color into rgba array
+      ctx.fillStyle = color;
+      ctx.fillRect(mouseX, mouseY, 1, 1);
       let rgb = (color.replace(regex, '').split(','));
       rgb.push(255)
       const rgba = rgb.map( num => parseInt(num, 10));
