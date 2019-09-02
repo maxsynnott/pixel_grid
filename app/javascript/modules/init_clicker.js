@@ -9,22 +9,24 @@ function initClicker() {
     };
   }
 
-  // On each mousedown we get the css transform property of the canvas and divide
-  // the perceived coordinates by the zoom amount to get pixel accurate position.
-  canvas.addEventListener('mousedown', (evt) => {
-    const regex = /[\.|\d]+/;
-    const zoom = canvas.style.transform.match(regex);
-    const mousePos = getMousePos(canvas, evt);
-    const coordsX = Math.floor(mousePos.x / zoom);
-    const coordsY = Math.floor(mousePos.y / zoom);
-    // console.log("X: " + coordsX + "\n" + "Y: " + coordsY + "\n");
-    // console.log(colour);
-    ctx.fillStyle = color;
-    // Outputs a 1x1 pixel on the screen where you click based on coords.
-    ctx.fillRect(coordsX, coordsY, 1, 1);
-  }, false);
+  document.addEventListener('mousedown', () => click = true);
 
-
+  document.addEventListener('mouseup', (evt) => {
+    if (click) {
+      // On each click we get the css transform property of the canvas and divide
+      // the perceived coordinates by the zoom amount to get pixel accurate position.
+      const regex = /[\.|\d]+/;
+      const zoom = canvas.style.transform.match(regex);
+      const mousePos = getMousePos(canvas, evt);
+      const coordsX = Math.floor(mousePos.x / zoom);
+      const coordsY = Math.floor(mousePos.y / zoom);
+      // console.log("X: " + coordsX + "\n" + "Y: " + coordsY + "\n");
+      // console.log(colour);
+      ctx.fillStyle = color;
+      // Outputs a 1x1 pixel on the screen where you click based on coords.
+      ctx.fillRect(coordsX, coordsY, 1, 1);
+    }
+  });
 
   // Spinny boy
   // document.addEventListener('keydown', (event) => {
