@@ -12,30 +12,23 @@ class PaymentsController < ApplicationController
     if current_user.stripe_id.nil?
       customer = Stripe::Customer.create(
         source: params[:stripeToken],
-        email:  params[:stripeEmail],
+        email:  params[:stripeEmail]
       )
       current_user.update!(stripe_id: customer.id)
-
-      charge = Stripe::Charge.create(
-        customer:     current_user.stripe_id, # You should store this customer id and re-use it.
-        amount:       @final_price,
-        description:  "Payment of #{@final_display_price} EUR for #{@order.amount} pixels.",
-        currency:     "eur"
-      )
-      @order.update(payment: charge.to_json, state: 'paid')
-      current_user.update!(pixel_credits: current_user.pixel_credits + @order.amount)
-    else
-      charge = Stripe::Charge.create(
-        customer:     current_user.stripe_id, # You should store this customer id and re-use it.
-        amount:       @final_price,
-        description:  "Payment of #{@final_display_price} EUR for #{@order.amount} pixels.",
-        currency:     "eur"
-      )
-      @order.update(payment: charge.to_json, state: 'paid')
-      current_user.update!(pixel_credits: current_user.pixel_credits + @order.amount)
     end
+
+    charge = Stripe::Charge.create(
+      customer:     current_user.stripe_id, # You should store this customer id and re-use it.
+      amount:       @final_price,
+      description:  "Payment of #{@final_display_price} EUR for #{@order.amount} pixels.",
+      currency:     "eur"
+    )
+
+    @order.update(payment: charge.to_json, state: 'paid')
+    current_user.update!(pixel_credits: current_user.pixel_credits + @order.amount)
+
     redirect_to orders_path(@order)
-    rescue Stripe::CardError => e
+  rescue Stripe::CardError => e
     flash[:alert] = e.message
     redirect_to new_order_payment_path(@order)
   end

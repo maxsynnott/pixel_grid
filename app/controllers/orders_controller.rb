@@ -19,10 +19,10 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:amount).permit(:state, :price)
+    params.require(:order).permit(:amount, :state, :price)
   end
 
   def set_order
-    @review = Review.find(params[:id])
+    @order = Order.find(params[:id])
   end
 end
