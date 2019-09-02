@@ -2,7 +2,6 @@ const id = canvas.dataset.id
 App[id] = App.cable.subscriptions.create(
   { channel: 'GridChannel', grid_id: id }, {
   received: (data) => {
-    console.log(data);
     const rgba = rgbas[data.colorIndex];
     const pixelData = new ImageData(Uint8ClampedArray.from(rgba), 1, 1);
     ctx.putImageData(pixelData, data.x, data.y);
