@@ -1,9 +1,13 @@
 function initClicker() {
-  canvas.addEventListener('mousedown', (event) => {
-    ctx.fillStyle = color;
-    // Outputs a 1x1 pixel on the screen where you click based on coords.
-    ctx.fillRect(mouseX, mouseY, 1, 1);
-  }, false);
+  document.addEventListener('mousedown', () => click = true);
+
+  document.addEventListener('mouseup', (evt) => {
+    if (click) {
+      ctx.fillStyle = color;
+      // Outputs a 1x1 pixel on the screen where you click based on coords.
+      ctx.fillRect(mouseX, mouseY, 1, 1);
+    }
+  });
 
   // Spinny boy
   // document.addEventListener('keydown', (event) => {
