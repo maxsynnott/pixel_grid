@@ -14,6 +14,9 @@
   const canvas = document.getElementById('grid');
   const ctx = canvas.getContext('2d');
 
+  let mouseX = 0;
+  let mouseY = 0;
+
   // These are the 16 colours, defined here so they are globally accessible.
   const rgbas = {0: [255, 255, 255, 255],
                 1: [87, 87, 87, 255],
