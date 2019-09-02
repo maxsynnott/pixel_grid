@@ -1,0 +1,13 @@
+<!-- for redundancy maybe we will need it in the future, but disabled in the routes.rb -->
+
+<h3>This is the show order page.</h3>
+<hr>
+<div>
+  <h4>Your Orders:</h4>
+  <% @order.each do |order| %>
+
+    <h3>Order Date: <%= order.created_at %></h3>
+    <h4>Amount of Pixels: <%= order.amount %></h4>
+  <h4>Amount paid: <%= order.price %></h4>
+<% end %>
+</div>
