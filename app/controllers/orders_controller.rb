@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:create]
   def create
-    @order = Order.new(state: "pending", amount: params[:amount], price: 60)
+    @order = Order.new(order_params)
     @order.user = current_user
+    @order.state = "pending"
     @order.save
     redirect_to new_order_payment_path(@order)
   end
@@ -19,7 +20,8 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:amount, :state, :price)
+    # make more secure when switching to simple form
+    params.permit(:amount, :price)
   end
 
   def set_order
