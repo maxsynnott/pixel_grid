@@ -1,5 +1,6 @@
 function initTracker() {
   canvas.addEventListener('mousemove', (event) => {
+    click = false;
     const rect = canvas.getBoundingClientRect();
     const regex = /[\.|\d]+/;
     const zoom = canvas.style.transform.match(regex);
