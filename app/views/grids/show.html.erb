@@ -1,6 +1,6 @@
 <div id="stage">
   <!-- The display: none, hides the grid until it's position has been set -->
-  <canvas id="grid" height="<%= @grid.height %>", width="<%= @grid.width %>" data-pixel-bits="<%= @grid.pixel_bits %>" style="display: none;"></canvas>
+  <canvas id="grid" height="<%= @grid.height %>" width="<%= @grid.width %>" data-pixel-bits="<%= @grid.pixel_bits %>" data-id="<%= @grid.id %>" style="display: none;"></canvas>
 </div>
 
 <div class="cols-container">
@@ -13,6 +13,9 @@
 
   const canvas = document.getElementById('grid');
   const ctx = canvas.getContext('2d');
+
+  let mouseX = 0;
+  let mouseY = 0;
 
   // These are the 16 colours, defined here so they are globally accessible.
   const rgbas = {0: [255, 255, 255, 255],
@@ -33,5 +36,7 @@
                 15: [0, 0, 0, 255]}
 
   // Starting colour
-  let color = 'rgba(0, 0, 0, 1)';
+  let color = 'rgb(0, 0, 0)';
+
+  let click = null;
 </script>

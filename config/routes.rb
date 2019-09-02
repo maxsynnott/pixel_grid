@@ -8,4 +8,9 @@ Rails.application.routes.draw do
     resources :payments, only: [:new, :create]
   end
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      post '/grids/:id/place_pixel', to: 'grids#place_pixel'
+    end
+  end
 end
