@@ -11,34 +11,83 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
         <li class="nav-item">
           <a href="#" class="nav-link">Pixels: <%= current_user.pixel_credits %></a>
         </li>
+        <li>
+          <button id="dashboard" class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-flip">Dashboard</button>
+          <div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
+              <div class="uk-offcanvas-bar">
+
+                  <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+                  <h3>Pixels: <%= current_user.pixel_credits %></h3>
+
+                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+
+              </div>
+          </div>
+        </li>
         <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= image_tag "logo.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <!--   # <%= link_to "Action", "#", class: "dropdown-item" %>
-            # <%= link_to "Another action", "#", class: "dropdown-item" %> -->
 
-            <%= form_tag orders_path do %>
-              <%= hidden_field_tag 'user_id', current_user[:id] %>
-              <%= hidden_field_tag 'amount', amount = 50 %>
-              <%= hidden_field_tag 'price', price = 60 %>
-              <%= submit_tag 'Purchase', class: 'btn btn-primary dropdown-item' %>
-            <% end %>
+<!--       # <%= form_tag orders_path do %>
+             # <%= hidden_field_tag 'user_id', current_user[:id] %>
+             # <%= hidden_field_tag 'amount', amount = 50 %>
+             # <%= hidden_field_tag 'price', price = 60 %>
+             # <%= submit_tag 'Purchase', class: 'btn btn-primary dropdown-item' %>
+           # <% end %> -->
 
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+
           </div>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      <li>
+          <button id="dashboard" class="uk-button uk-button-primary" type="button" uk-toggle="target: #offcanvas-flip">Get Started</button>
+          <div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
+              <div class="uk-offcanvas-bar">
+
+                  <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+                  <h3>Sign up</h3>
+
+                  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+                    <%= devise_error_messages! %>
+
+
+                    <%= f.email_field :email, class: "uk-input", placeholder: "Email" %>
+
+
+                    <%= f.password_field :password, class: "uk-input", placeholder: "Password" %>
+
+
+                    <%= f.password_field :password_confirmation, class: "uk-input", placeholder: "Confirm password" %>
+
+                    <%= f.submit "Sign up", class: "btn btn-flat", style: "width: 100%; background: #dee2e6; margin-bottom: 12px; margin: 6px 0px 0px 0px;" %>
+                  <% end %>
+
+
+                <br>
+                <center> <h5>Or</h5> </center>
+
+
+                  <h3>Sign In</h3>
+
+                  <%= simple_form_for(:user, :url => session_path(:user)) do |f| %>
+                    <%= f.text_field :email, class: "uk-input", placeholder: "Email" %>
+                    <%= f.password_field :password, class: "uk-input", placeholder: "Password" %>
+                    <br>
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                    <%= f.submit 'Sign in', class: "btn btn-flat", style: "width: 100%; background: #dee2e6; margin-bottom: 12px;" %>
+                    <br>
+                    <%= link_to "Forgot your password?", new_password_path(:user) %>
+                    <hr>
+                    <% end %>
+
+              </div>
+          </div>
         </li>
       <% end %>
     </ul>

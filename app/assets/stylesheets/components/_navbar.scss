@@ -1,6 +1,37 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  #dashboard {
+    margin: 0px 20px 0px 20px;
+  }
+  .nav-link {
+    color: #333 !important;
+  }
+  button {
+    text-transform: capitalize;
+    font-size: 1em;
+  }
+  .uk-offcanvas-bar {
+    background-color: #F4F4F4;
+    @media (min-width: 960px) {
+        left: -350px;
+        width: 550px;
+        padding: 40px 40px;
+    }
+    h1, h2, h3, h4, h5, p, b, a, label, textarea, input, select, button.uk-offcanvas-close.uk-icon.uk-close {
+      color: #333;
+    }
+    .uk-input {
+      background-color: rgb(255, 255, 255);
+      color: black;
+      border-color: rgb(220, 220, 220);
+      margin: 6px 0px 6px 0px;
+      &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #B9B9B9;
+      opacity: 1; /* Firefox */
+    }
+    }
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,3 +41,5 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+
