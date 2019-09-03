@@ -19,6 +19,8 @@ const initGrid = () => {
     ctx.msImageSmoothingEnabled = false;
     ctx.imageSmoothingEnabled = false;
     ctx.putImageData(pixelGridData, 0, 0);
+
+    canvas.style.boxShadow = "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)"
   } else {
     // Code to run when canvas is unsupported
   };
