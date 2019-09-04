@@ -11,6 +11,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
+
         <li class="nav-item">
           <a href="#" class="nav-link">Pixels: <%= current_user.pixel_credits %></a>
         </li>
@@ -22,24 +23,52 @@
                   <button class="uk-offcanvas-close" type="button" uk-close></button>
 
                   <h3>Pixels: <%= current_user.pixel_credits %></h3>
+              <br>
+              <br>
+              <h4>Add Pixels</h4>
+              <div id="buy-btn-container">
+                <button class="uk-button uk-button-default" onClick='document.getElementById("amount").value = 10'>10</button>
+                <button class="uk-button uk-button-default" onClick='document.getElementById("amount").value = 50'>50</button>
+                <button class="uk-button uk-button-default" onClick='document.getElementById("amount").value = 100'>100</button>
+                <button class="uk-button uk-button-default" onClick='document.getElementById("amount").value = 200'>200</button>
+              </div>
+              <div id="buy-form">
+              <%= form_tag orders_path do %>
+              <%= hidden_field_tag 'user_id', current_user[:id] %>
+              <%= number_field_tag 'amount', '10',  class: "uk-input", placeholder: "Custom Amount", inputmode: "decimal" %>
+              <%= hidden_field_tag 'price', price = 10 %>
+              <%= submit_tag 'Donate!', class: 'btn btn-primary', style: "color:white; width:100%;" %>
+            <% end %>
+            </div>
 
-                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <br>
+            <% if @show %>
+              <% if @orders.count > 0 %>
+                <div id="past-orders">
+                  <h4>Your Donations</h4>
+                  <br>
+                  <% @orders.each do |order| %>
+                    <p>Order ID: <%= order.id %></p>
+                    <p>Order Date: <%= order.created_at.to_s[0..15] %></p>
+                    <p><%= order.amount %> Pixels</p>
+                    <p>Paid: <%= number_to_currency(order.price, :unit=>'€') %></p>
+                  <hr>
+                <% end %>
+                </div>
+                <% else %>
+                <br>
+                <center><p style="color: #b3b3b3;">No donations yet :(</p></center>
+              <% end %>
+            <% end %>
+
+                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "uk-button uk-button-primary", id: "logout" %>
 
               </div>
           </div>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "logo.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-<!--       # <%= form_tag orders_path do %>
-             # <%= hidden_field_tag 'user_id', current_user[:id] %>
-             # <%= hidden_field_tag 'amount', amount = 50 %>
-             # <%= hidden_field_tag 'price', price = 60 %>
-             # <%= submit_tag 'Purchase', class: 'btn btn-primary dropdown-item' %>
-           # <% end %> -->
-
-
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">z
           </div>
         </li>
       <% else %>
@@ -54,16 +83,9 @@
 
                   <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
                     <%= devise_error_messages! %>
-
-
                     <%= f.email_field :email, class: "uk-input", placeholder: "Email" %>
-
-
                     <%= f.password_field :password, class: "uk-input", placeholder: "Password" %>
-
-
                     <%= f.password_field :password_confirmation, class: "uk-input", placeholder: "Confirm password" %>
-
                     <%= f.submit "Sign up", class: "btn btn-flat", style: "width: 100%; background: #dee2e6; margin-bottom: 12px; margin: 6px 0px 0px 0px;" %>
                   <% end %>
 
@@ -85,7 +107,6 @@
                     <%= link_to "Forgot your password?", new_password_path(:user) %>
                     <hr>
                     <% end %>
-
               </div>
           </div>
         </li>
