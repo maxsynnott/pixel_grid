@@ -25,13 +25,13 @@ function initClicker() {
   });
 
   // Spinny boy
-  // document.addEventListener('keydown', (event) => {
-  //   const keyName = event.key;
-  //   if (keyName === "`") {
-  //     // do not alert when only Control key is pressed.
-  //     document.querySelector("#stage").className = "speen";
-  //   }
-  // });
+  document.addEventListener('keydown', (event) => {
+    const keyName = event.key;
+    if (keyName === "`") {
+      // do not alert when only Control key is pressed.
+      document.querySelector("#grid").className = "speen";
+    }
+  });
 }
 
 export { initClicker };
