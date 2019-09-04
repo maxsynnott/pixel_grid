@@ -4,7 +4,7 @@ function initClicker() {
   document.addEventListener('mousedown', () => click = true);
 
   document.addEventListener('mouseup', (evt) => {
-    if (click) {
+    if (click && (evt.target.id == 'grid')) {
       // converts color into rgba array
       currentHover = []
       ctx.fillStyle = color;
