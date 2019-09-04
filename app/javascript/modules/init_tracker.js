@@ -4,7 +4,7 @@ function initTracker() {
                          const imgData = ctx.getImageData(x, y, 1, 1);
                          if (JSON.stringify([imgData, x, y]) != JSON.stringify(currentHover)) {
                            const alpha = imgData.data[3];
-                           imgData.data[3] = 150; // Wanted hover alpha value, 0-255
+                           imgData.data[3] = 100; // Wanted hover alpha value, 0-255
                            ctx.putImageData(imgData, x, y);
                            if (currentHover.length != 0) {
                              currentHover[0].data[3] = alpha
