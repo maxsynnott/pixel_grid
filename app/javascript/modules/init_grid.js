@@ -3,6 +3,7 @@ const initGrid = () => {
   if (canvas.getContext) {
     let pixelBits = canvas.dataset.pixelBits
     let pixelArray = [];
+    const queue = JSON.parse(canvas.dataset.queue);
 
     // Converts each 4 bit number into an rgba and pushes it into pixelArray
     for (let i = 0; i < pixelBits.length; i+= 4) {
@@ -18,7 +19,14 @@ const initGrid = () => {
     ctx.webkitImageSmoothingEnabled = false;
     ctx.msImageSmoothingEnabled = false;
     ctx.imageSmoothingEnabled = false;
+
     ctx.putImageData(pixelGridData, 0, 0);
+
+    for (let i = 0; i < queue.length; i++) {
+      const placement = queue[i];
+      const pixel = new ImageData(Uint8ClampedArray.from(rgbas[placement[2]]), 1, 1);
+      ctx.putImageData(pixel, placement[0], placement[1]);
+    }
 
     canvas.style.boxShadow = "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)"
   } else {
