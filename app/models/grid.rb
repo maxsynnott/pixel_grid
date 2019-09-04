@@ -17,12 +17,10 @@ class Grid < ApplicationRecord
     save!
   end
 
-  def update_pixel(x, y, bit_string)
-    # This can be used to update and save any pixel on the grid to any color
-    start_index = (width * y + x) * 4
-    pixel_bits_will_change!
-    pixel_bits[start_index..(start_index + 3)] = bit_string
-    save!
+  def update_pixel(xyc)
+    batch_update if queue.length >= 100 # Will update pixel to db every x num of pixel_bits
+    queue << [xyc[0], xyc[1], xyc[2]]
+    save
   end
 
   private
@@ -30,5 +28,15 @@ class Grid < ApplicationRecord
   def fill_bits
     self.pixel_bits = ""
     (width * height).times { pixel_bits << "0000" }
+  end
+
+  def batch_update
+    pixel_bits_will_change!
+    queue.each do |xyc|
+      start_index = (width * xyc[1] + xyc[0]) * 4
+      pixel_bits[start_index..(start_index + 3)] = "%04b" % xyc[2]
+    end
+    self.queue = []
+    save!
   end
 end
