@@ -21,7 +21,7 @@ const initPanzoom = () => {
     if (zoom >= 30) {
       canvas.style.boxShadow = "";
     } else if (zoom < 30) {
-      canvas.style.boxShadow = "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)"
+      canvas.style.boxShadow = `0 ${canvas.height / 75}px ${canvas.height / 50}px rgba(0,0,0,0.30)`
     }
   });
 
