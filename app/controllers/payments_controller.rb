@@ -27,7 +27,7 @@ class PaymentsController < ApplicationController
     @order.update(payment: charge.to_json, state: 'paid')
     current_user.update!(pixel_credits: current_user.pixel_credits + @order.amount)
 
-    redirect_to orders_path(@order)
+    redirect_to '/'
   rescue Stripe::CardError => e
     flash[:alert] = e.message
     redirect_to new_order_payment_path(@order)
