@@ -1,6 +1,6 @@
 <div id="stage">
   <!-- The display: none, hides the grid until it's position has been set -->
-  <canvas id="grid" height="<%= @grid.height %>" width="<%= @grid.width %>" data-pixel-bits="<%= @grid.pixel_bits %>" data-id="<%= @grid.id %>" style="display: none;"></canvas>
+  <canvas class="uk-animation-fade" id="grid" height="<%= @grid.height %>" width="<%= @grid.width %>" data-pixel-bits="<%= @grid.pixel_bits %>" data-id="<%= @grid.id %>" style="display: none;"></canvas>
 </div>
 
 <div class="cols-container">
@@ -41,4 +41,7 @@
   let click = null;
 
   let currentHover = [];
+  setTimeout(function(){
+  document.querySelector("#grid").classList = "";
+ }, 2000);
 </script>

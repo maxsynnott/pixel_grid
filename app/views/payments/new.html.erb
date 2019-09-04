@@ -1,22 +1,17 @@
-<h1>Purchase of teddy </h1>
 
 <%= form_tag order_payments_path(@order) do %>
-  <article>
-    <label class="amount">
-      <h3>Amount of Pixels: <%= @order.amount %></h3>
 
 
-      <h3>Total Price: <%= number_to_currency(@final_display_price, :unit=>'€') %></h3>
-    </label>
 
-  </article>
 
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-name="Pixels"
+    data-name="<%= @order.amount %> Pixels"
     data-email="<%= current_user.email %>"
-    data-description="Pixels amount"
+    data-description="for charity"
     data-amount="<%= @final_price %>"
     data-currency="eur"></script>
+
+
 
 <% end %>
