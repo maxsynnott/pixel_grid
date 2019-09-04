@@ -19,7 +19,7 @@ class Grid < ApplicationRecord
 
   def update_pixel(xyc)
     batch_update if queue.length >= 100 # Will update pixel to db every x num of pixel_bits
-    queue << [xyc[0], xyc[1], xyc[2]]
+    queue << [xyc[0], xyc[1], xyc[2]] unless xyc.include?(nil)
     save
   end
 
