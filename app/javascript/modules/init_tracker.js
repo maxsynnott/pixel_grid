@@ -3,14 +3,15 @@ function initTracker() {
     setTimeout(() => { if ((x == mouseX) && (y == mouseY)) {
                          const imgData = ctx.getImageData(x, y, 1, 1);
                          if (JSON.stringify([imgData, x, y]) != JSON.stringify(currentHover)) {
-                           const alpha = imgData.data[3];
-                           imgData.data[3] = 100; // Wanted hover alpha value, 0-255
-                           ctx.putImageData(imgData, x, y);
+                           const alpha = imgData.data[3]
+                           const imgDataCopy = imgData
+                           imgDataCopy.data[3] = 100; // Wanted hover alpha value, 0-255
+                           ctx.putImageData(imgDataCopy, x, y);
                            if (currentHover.length != 0) {
                              currentHover[0].data[3] = alpha
                              ctx.putImageData(currentHover[0], currentHover[1], currentHover[2])
                            }
-                           currentHover = [imgData, x, y]
+                           currentHover = [imgDataCopy, x, y]
                          };
                        }
                      }, 50); // Number of miliseconds before pixel is highlighted
