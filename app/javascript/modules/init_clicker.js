@@ -11,8 +11,19 @@ function initClicker() {
       ctx.fillRect(mouseX, mouseY, 1, 1);
       let rgb = (color.replace(regex, '').split(','));
       rgb.push(255)
-      const rgba = rgb.map( num => parseInt(num, 10));
-      const colorIndex = parseInt(Object.keys(rgbas).find(key => JSON.stringify(rgbas[key]) === JSON.stringify(rgba)), 10);
+      const rgbaArray = rgb.map( num => parseInt(num, 10));
+
+      // This is horrifically ineffecient code and must be cleaned but it works
+      const colorIndex = parseInt(Object.keys(rgbas).find((key) => {
+        let match = true
+        let comparison = rgbas[key]
+        for (let i = 0; i < 4; i++) {
+          if ((rgbaArray[i] > (comparison[i] + 4)) || (rgbaArray[i] < (comparison[i] - 4))) {
+            match = false;
+          }
+        }
+        return match
+      }), 10);
       fetch(`/api/v1/grids/${canvas.dataset.id}/place_pixel`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
