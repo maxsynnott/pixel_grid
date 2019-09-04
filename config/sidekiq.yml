@@ -1,0 +1,6 @@
+:concurrency: 1 # We may want to increase this later
+:timeout: 60
+:verbose: true
+:queues:  # Queue priority: https://github.com/mperham/sidekiq/wiki/Advanced-Options
+  - default
+  - mailers

@@ -1,6 +1,6 @@
 const initColorCopier = () => {
   const regex = new RegExp('[r|g|b|(|)| ]', 'g')
-  document.addEventListener('keyup', (event) => {
+  document.addEventListener('keydown', (event) => {
     if (event.key === "Control") {
       const rgba = ctx.getImageData(mouseX, mouseY, 1, 1).data;
       color = `rgb(${rgba[0]}, ${rgba[1]}, ${rgba[2]}`;

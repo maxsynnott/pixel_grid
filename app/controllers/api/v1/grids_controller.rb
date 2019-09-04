@@ -7,6 +7,6 @@ class Api::V1::GridsController < Api::V1::BaseController
     ActionCable.server.broadcast("grid_#{@grid.id}", x: x,
                                                      y: y,
                                                      colorIndex: color_index)
-    @grid.update_pixel(x, y, "%04b" % color_index)
+    PixelUpdateJob.perform_later(grid_id: @grid.id, x: x, y: y, binary: "%04b" % color_index)
   end
 end

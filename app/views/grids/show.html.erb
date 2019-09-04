@@ -14,8 +14,8 @@
   const canvas = document.getElementById('grid');
   const ctx = canvas.getContext('2d');
 
-  let mouseX = 0;
-  let mouseY = 0;
+  let mouseX = null;
+  let mouseY = null;
 
   // These are the 16 colours, defined here so they are globally accessible.
   const rgbas = {0: [255, 255, 255, 255],
@@ -39,4 +39,6 @@
   let color = 'rgb(0, 0, 0)';
 
   let click = null;
+
+  let currentHover = [];
 </script>
