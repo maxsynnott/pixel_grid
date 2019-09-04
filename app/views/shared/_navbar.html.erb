@@ -35,7 +35,9 @@
               <div id="buy-form">
               <%= form_tag orders_path do %>
               <%= hidden_field_tag 'user_id', current_user[:id] %>
+              <div uk-tooltip="title: Hello World; pos: left">
               <%= number_field_tag 'amount', '10',  class: "uk-input", placeholder: "Custom Amount", inputmode: "decimal" %>
+              </div>
               <%= hidden_field_tag 'price', price = 10 %>
               <%= submit_tag 'Donate!', class: 'btn btn-primary', style: "color:white; width:100%;" %>
             <% end %>
