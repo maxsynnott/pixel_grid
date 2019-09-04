@@ -1,0 +1,71 @@
+<div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+        <h2>Pixels:
+            <%= current_user.pixel_credits %>
+        </h2>
+        <br>
+        <br>
+        <h4>Add Pixels</h4>
+        <div id="buy-btn-container">
+            <button class="uk-button uk-button-default" onClick='document.getElementById("amount").value = 10'>10</button>
+            <button class="uk-button uk-button-default" onClick='document.getElementById("amount").value = 50'>50</button>
+            <button class="uk-button uk-button-default" onClick='document.getElementById("amount").value = 100'>100</button>
+            <button class="uk-button uk-button-default" onClick='document.getElementById("amount").value = 200'>200</button>
+        </div>
+        <div id="buy-form">
+            <%= form_tag orders_path do %>
+            <%= hidden_field_tag 'user_id', current_user[:id] %>
+            <div uk-tooltip="title: Or enter a custom amount.; pos: left">
+                <%= number_field_tag 'amount', '10',  class: "uk-input", placeholder: "Custom Amount", inputmode: "decimal" %>
+            </div>
+            <%= hidden_field_tag 'price', price = 10 %>
+            <%= submit_tag 'Donate!', class: 'btn btn-primary', style: "color:white; width:100%; border-radius: 0;" %>
+            <% end %>
+        </div>
+        <br>
+        <br>
+        <h3>Donation History</h3>
+        <% if @show %>
+        <% if @orders.count > 0 %>
+        <div id="past-orders">
+            <br>
+            <table class="uk-table uk-table-divider">
+                <thead>
+                    <tr>
+                        <th>Paid</th>
+                        <th>Pixels</th>
+                        <th>Date</th>
+                        <th>ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @orders.each do |order| %>
+                    <tr>
+                        <td>
+                            <%= number_to_currency(order.price, :unit=>'€') %>
+                        </td>
+                        <td>
+                            <%= order.amount %>
+                        </td>
+                        <td uk-tooltip="title:at <%= order.created_at.to_s[11..15] %> ; pos: right">
+                            <%= order.created_at.to_s[0..9] %>
+                        </td>
+                        <td>
+                            <%= order.id %>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+        <% else %>
+        <br>
+        <center>
+            <p style="color: #b3b3b3;">No donations yet :(</p>
+        </center>
+        <% end %>
+        <% end %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "uk-button uk-button-primary", id: "logout" %>
+    </div>
+</div>
