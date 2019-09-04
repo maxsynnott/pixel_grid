@@ -5,8 +5,8 @@ class Api::V1::GridsController < Api::V1::BaseController
 
     @grid = Grid.find(params[:id]) if (0..Grid.last.id).include?(params[:id])
     if @grid
-      validated = false if (0..@grid.width).include?(params[:x])
-      validated = false if (0..@grid.height).include?(params[:y])
+      validated = false if (0...@grid.width).include?(params[:x])
+      validated = false if (0...@grid.height).include?(params[:y])
       validated = false if (0..15).include?(params[:colorIndex])
     end
 
