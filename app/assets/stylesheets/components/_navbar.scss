@@ -4,35 +4,6 @@
   #dashboard {
     margin: 0px 20px 0px 20px;
   }
-  #buy-btn-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: ". . . .";
-    width: 100%;
-    height: 8%;
-    button {
-    border: 1px solid #d6d6d6;
-    border-width: 1px 1px 0 0;
-    &:nth-child(1){
-    border-width: 1px 1px 0 1px;
-      }
-    }
-    .uk-button {
-      color: black;
-      border-color: #d0d0d0;
-      background-color: white;
-    }
-    @media screen and (max-width: 960px) {
-      display: initial;
-      height: intial;
-      .uk-button, .uk-button:nth-child(1) {
-        width: 100%;
-        border: 1px solid #d0d0d0;
-        margin-bottom: 10px;
-      }
-    }
-  }
   .nav-link {
     color: #333 !important;
   }
@@ -42,65 +13,35 @@
   }
   .uk-offcanvas-bar {
     background-color: #F4F4F4;
-    overflow:hidden;
     @media (min-width: 960px) {
-      left: -350px;
-      width: 550px;
-      padding: 40px 40px;
-      #amount {
-        margin-bottom:10px;
-      }
+        left: -350px;
+        width: 550px;
+        padding: 40px 40px;
     }
-  }
-  h1, h2, h3, h4, h5, p, b, a, label, textarea, input, select, button.uk-offcanvas-close.uk-icon.uk-close {
-    color: #333;
-  }
-   #buy-form .uk-input {
-    margin: 0;
-    height: 70px;
-    text-align: center;
-    font-weight: 900;
+    h1, h2, h3, h4, h5, p, b, a, label, textarea, input, select, button.uk-offcanvas-close.uk-icon.uk-close {
+      color: #333;
     }
-  #logout {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    width: 100%;
-    height: 4em;
-    background-color: #1e87f0;
-    color: white;
-    padding-top: 8px;
-  }
-  .uk-input {
-    background-color: rgb(255, 255, 255);
-    color: black;
-    border-color: rgb(220, 220, 220);
-    margin: 6px 0px 6px 0px;
-    &:focus {
-      background-color: white !important;
-      color: black !important;
-      border-color: #167ffb;
-    }
-    &::placeholder {
-      /* Chrome, Firefox, Opera, Safari 10.1+ */
+    .uk-input {
+      background-color: rgb(255, 255, 255);
+      color: black;
+      border-color: rgb(220, 220, 220);
+      margin: 6px 0px 6px 0px;
+      &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: #B9B9B9;
-      opacity: 1;
-      /* Firefox */
+      opacity: 1; /* Firefox */
+    }
     }
   }
 }
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
+
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
 .navbar {
   border-bottom: 1px lightgray solid;
-}
-hr {
-  background-color: #d2d2d2;
-}
-#past-orders {
-  overflow:hidden;
 }
