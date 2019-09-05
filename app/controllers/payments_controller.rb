@@ -12,21 +12,20 @@ class PaymentsController < ApplicationController
     if current_user.stripe_id.nil?
       customer = Stripe::Customer.create(
         source: params[:stripeToken],
-        email:  params[:stripeEmail]
+        email:  params[:stripeEmail],
       )
-      current_user.update!(stripe_id: customer.id)
+      current_user.update(stripe_id: customer.id)
     end
 
     charge = Stripe::Charge.create(
-      customer:     current_user.stripe_id, # You should store this customer id and re-use it.
+      customer:     customer.id, #current_user.stripe_id, # You should store this customer id and re-use it.
       amount:       @final_price,
       description:  "Payment of #{@final_display_price} EUR for #{@order.amount} pixels.",
       currency:     "eur"
     )
-
     @order.update(payment: charge.to_json, state: 'paid')
-    current_user.update!(pixel_credits: current_user.pixel_credits + @order.amount)
-
+    current_user.update(pixel_credits: current_user.pixel_credits + @order.amount)
+    flash[:notice] = "You've added #{@order.amount} pixels!"
     redirect_to '/'
   rescue Stripe::CardError => e
     flash[:alert] = e.message
