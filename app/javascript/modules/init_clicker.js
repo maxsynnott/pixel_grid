@@ -1,6 +1,8 @@
 function initClicker() {
   const regex = new RegExp('[r|g|b|(|)| ]', 'g')
 
+  const pixelCount = document.querySelector(".credits")
+
   document.addEventListener('mousedown', () => click = true);
 
   document.addEventListener('mouseup', (evt) => {
@@ -9,6 +11,11 @@ function initClicker() {
       currentHover = []
       ctx.fillStyle = color;
       ctx.fillRect(mouseX, mouseY, 1, 1);
+
+      if (pixelCount) {
+        pixelCount.innerText = `Pixels: ${pixelCount.innerText.match(/[\d]+/) - 1}`
+      }
+
       let rgb = (color.replace(regex, '').split(','));
       rgb.push(255)
       const rgbaArray = rgb.map( num => parseInt(num, 10));
