@@ -39,7 +39,7 @@ const initImgPainter = () => {
           })
         }
         // Just for presentation purposes
-        if (event.key == "p") {
+        if (event.key == "0") {
           window.location.href += "grids/7";
         }
       })
