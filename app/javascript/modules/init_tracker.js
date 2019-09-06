@@ -1,4 +1,5 @@
 function initTracker() {
+
   const hoverCheck = async (x, y) => {
     setTimeout(() => { if ((x == mouseX) && (y == mouseY)) {
                          const imgData = ctx.getImageData(x, y, 1, 1);
@@ -24,7 +25,9 @@ function initTracker() {
     const zoom = stage.style.transform.match(regex);
     mouseX = Math.floor((event.clientX - rect.left) / zoom);
     mouseY = Math.floor((event.clientY - rect.top) / zoom);
-    hoverCheck(mouseX, mouseY);
+    if (window.innerWidth > 800) {
+      hoverCheck(mouseX, mouseY);
+    }
   });
 }
 
