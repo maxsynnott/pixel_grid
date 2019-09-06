@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     # redirect_to grid_path(Grid.last)
-    @grid = Grid.last
+    @grid = Grid.find(1)
     @orders = Order.where(user_id: current_user[:id]) if current_user
     @show = true if @orders
     @queue = @grid.queue
