@@ -7,7 +7,7 @@
   <!-- Colors are inserted through javascript -->
 </div>
 
-<div id="modal" uk-modal>
+<div id="alpha-modal" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
         <button class="uk-modal-close-default" type="button" uk-close></button>
         <h2 class="uk-modal-title mb-3 border-bottom pb-2">Welcome to <strong>pixelGrid</strong></h2>
@@ -22,8 +22,10 @@
 </div>
 
 <script>
+  <% if !current_user %>
+    UIkit.modal(document.getElementById('alpha-modal')).show();
+  <% end %>
 
-  UIkit.modal(document.getElementById('modal')).show();
   // There has to be a better place to put all this but
   // it's function and helpful for now.
 
