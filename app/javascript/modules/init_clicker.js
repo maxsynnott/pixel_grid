@@ -31,6 +31,7 @@ function initClicker() {
         }
         return match
       }), 10);
+
       fetch(`/api/v1/grids/${canvas.dataset.id}/place_pixel`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -43,13 +44,13 @@ function initClicker() {
   });
 
   // Spinny boy
-  document.addEventListener('keydown', (event) => {
-    const keyName = event.key;
-    if (keyName === "`") {
-      // do not alert when only Control key is pressed.
-      document.querySelector("#grid").className = "speen";
-    }
-  });
+  // document.addEventListener('keydown', (event) => {
+  //   const keyName = event.key;
+  //   if (keyName === "`") {
+  //     // do not alert when only Control key is pressed.
+  //     document.querySelector("#grid").className = "speen";
+  //   }
+  // });
 }
 
 export { initClicker };
