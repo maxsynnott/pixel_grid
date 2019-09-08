@@ -32,12 +32,12 @@ function initClicker() {
         return match
       }), 10);
       fetch(`/api/v1/grids/${canvas.dataset.id}/place_pixel`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ x: mouseX,
-                             y: mouseY,
-                             colorIndex: colorIndex
-                          })
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ x: mouseX,
+                               y: mouseY,
+                               colorIndex: colorIndex
+                            })
       })
     }
   });
