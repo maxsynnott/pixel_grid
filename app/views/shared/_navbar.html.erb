@@ -1,10 +1,13 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "/", class: "navbar-brand" do %>
-    <%= image_tag('logo.png')  %>
-  <% end %>
 
-  <div>
-    <p><i class="far fa-dot-circle"></i> <span id="user-count">0</span> online</p>
+  <div class="d-flex align-items-center">
+    <%= link_to "/", class: "navbar-brand" do %>
+      <%= image_tag('logo.png')  %>
+    <% end %>
+
+    <p class="mb-0">
+      <i style="color: green" class="far fa-dot-circle"></i> <span id="user-count">0</span> currently online
+    </p>
   </div>
 
   <button class="navbar-toggler" type="button" uk-toggle="target: #offcanvas-flip" >
