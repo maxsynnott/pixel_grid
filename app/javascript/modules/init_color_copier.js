@@ -6,7 +6,9 @@ const initColorCopier = () => {
       color = `rgb(${rgba[0]}, ${rgba[1]}, ${rgba[2]}`;
       let rgb = (color.replace(regex, '').split(','));
       rgb.push(255)
+
       const rgbaArray = rgb.map( num => parseInt(num, 10));
+      // Super shitty code, come back and clean this up
       const colorIndex = parseInt(Object.keys(rgbas).find((key) => {
         let match = true
         let comparison = rgbas[key]

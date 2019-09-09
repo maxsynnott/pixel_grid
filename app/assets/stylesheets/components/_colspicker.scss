@@ -2,86 +2,22 @@
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  /* grid-template-rows: 1fr; */
   position: absolute;
   bottom: 90px;
   left: 20px;
-  /* margin: 0; */
   cursor: crosshair;
   background-color: white;
   border: 3px white solid;
   grid-gap: 3px;
   height: 300px;
   width: 300px;
-
-    // #white {
-    //   background-color: $g-white;
-    // }
-    // #dkgrey {
-    // background-color:$g-dkgrey;
-    // }
-    // #red {
-    //   background-color:$g-red;
-    // }
-
-    // #blue {
-    //   background-color:$g-blue;
-    // }
-
-    // #green {
-    //   background-color:$g-green;
-    // }
-
-    // #brown {
-    //   background-color:$g-brown;
-    // }
-
-    // #purple {
-    //   background-color:$g-purple;
-    // }
-
-    // #ltgrey {
-    //   background-color:$g-ltgrey;
-    // }
-
-    // #ltgreen {
-    //   background-color:$g-ltgreen;
-    // }
-
-    // #ltblue {
-    //   background-color:$g-ltblue;
-    // }
-
-    // #cyan {
-    //   background-color:$g-cyan;
-    // }
-
-    // #orange {
-    //   background-color:$g-orange;
-    // }
-
-    // #yellow {
-    //   background-color:$g-yellow;
-    // }
-
-    // #tan {
-    //   background-color:$g-tan;
-    // }
-
-    // #pink {
-    //   background-color:$g-pink;
-    // }
-
-    // #black {
-    //   background-color:$g-black;
-    // }
 }
 
 .cols-container > div {
-    height: 100%;
-    width: 100%;
-    transition: all .2s ease-in-out;
-    &:hover {
+  height: 100%;
+  width: 100%;
+  transition: all .2s ease-in-out;
+  &:hover {
     transform:scale(1.1);
     box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.3);
   }
@@ -92,8 +28,8 @@
 }
 
 .active-mosaic {
-    padding: 70px;
-    width: 150px !important;
+  padding: 70px;
+  width: 150px !important;
 }
 
 
