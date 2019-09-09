@@ -10,6 +10,6 @@ class Placement < ApplicationRecord
   private
 
   def broadcast_placement
-    ActionCable.server.broadcast("grid_#{grid.id}", { x: x, y: y, color: color })
+    ActionCable.server.broadcast("grid_#{grid.id}", x: x, y: y, color: color)
   end
 end
