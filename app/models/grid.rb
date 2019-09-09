@@ -12,7 +12,7 @@ class Grid < ApplicationRecord
     bit_string = ""
     # For each coordinate in the grid it picks a random number from 0-15 and
     # converts it into a string of 4 bits
-    (width * height).times { bit_string << "%04b" % rand(15) }
+    (width * height).times { bit_string << "%04b" % rand(16) }
     self.pixel_bits = bit_string
     save!
   end
