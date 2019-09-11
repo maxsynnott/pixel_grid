@@ -3,7 +3,10 @@ import panzoom from "panzoom";
 const initPanzoom = () => {
   const navbar = document.querySelector(".navbar")
   const stage = document.getElementById("stage")
-  const initialZoom = (window.innerHeight - navbar.offsetHeight) * 0.9 / canvas.height;
+  let initialZoom = (window.innerHeight - navbar.offsetHeight) * 0.9 / canvas.height;
+  if ((initialZoom * canvas.width) > (window.innerWidth * 0.9)) {
+    initialZoom = window.innerWidth * 0.9 / canvas.width
+  }
 
   // Applies panzoom to the stage
   const controller = panzoom(stage, {zoomDoubleClickSpeed: 1, maxZoom: 150, minZoom: initialZoom / 2})
