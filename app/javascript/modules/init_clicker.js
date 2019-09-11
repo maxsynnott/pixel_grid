@@ -1,27 +1,9 @@
 function initClicker() {
-  const regex = new RegExp('[r|g|b|(|)| ]', 'g')
+  // This is horrifically ineffecient code and must be cleaned but it works
+  // NTS: rework entire function
 
-  const pixelCount = document.querySelector(".credits")
-
-  document.addEventListener('mousedown', () => click = true);
-
-  document.addEventListener('mouseup', (evt) => {
-    if (click && (evt.target.id == 'grid')) {
-      // converts color into rgba array
-      currentHover = []
-      ctx.fillStyle = color;
-      ctx.fillRect(mouseX, mouseY, 1, 1);
-
-      if (pixelCount) {
-        pixelCount.innerText = `Pixels: ${pixelCount.innerText.match(/[\d]+/) - 1}`
-      }
-
-      let rgb = (color.replace(regex, '').split(','));
-      rgb.push(255)
-      const rgbaArray = rgb.map( num => parseInt(num, 10));
-
-      // This is horrifically ineffecient code and must be cleaned but it works
-      const colorIndex = parseInt(Object.keys(rgbas).find((key) => {
+  const colorToIndex = (rgbaArray) => {
+    return parseInt(Object.keys(rgbas).find((key) => {
         let match = true
         let comparison = rgbas[key]
         for (let i = 0; i < 4; i++) {
@@ -31,15 +13,44 @@ function initClicker() {
         }
         return match
       }), 10);
+  }
 
-      fetch(`/api/v1/grids/${canvas.dataset.id}/place_pixel`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ x: mouseX,
-                               y: mouseY,
-                               colorIndex: colorIndex
-                            })
-      })
+  const regex = new RegExp('[r|g|b|(|)| ]', 'g')
+
+  const pixelCount = document.querySelector(".credits")
+
+  document.addEventListener('mousedown', () => click = true);
+
+  document.addEventListener('mouseup', (evt) => {
+    if (click && (evt.target.id == 'grid')) {
+      const originalRgbaArray = ctx.getImageData(mouseX, mouseY, 1, 1).data
+
+      currentHover = []
+      ctx.fillStyle = color;
+      ctx.fillRect(mouseX, mouseY, 1, 1);
+
+      if (pixelCount) {
+        pixelCount.innerText = `Pixels: ${pixelCount.innerText.match(/[\d]+/) - 1}`
+      }
+
+      // converts color into rgba array
+      let rgb = (color.replace(regex, '').split(','));
+      rgb.push(255)
+      const newRgbaArray = rgb.map( num => parseInt(num, 10));
+
+      const colorIndex = colorToIndex(newRgbaArray);
+
+      // currently gets confused by hover and needs reworking
+      if (colorToIndex(originalRgbaArray) != colorIndex) {
+        fetch(`/api/v1/grids/${canvas.dataset.id}/place_pixel`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ x: mouseX,
+                                 y: mouseY,
+                                 colorIndex: colorIndex
+                              })
+        })
+      }
     }
   });
 
