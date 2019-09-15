@@ -4,15 +4,15 @@ function initClicker() {
 
   const colorToIndex = (rgbaArray) => {
     return parseInt(Object.keys(rgbas).find((key) => {
-        let match = true
-        let comparison = rgbas[key]
-        for (let i = 0; i < 4; i++) {
-          if ((rgbaArray[i] > (comparison[i] + 4)) || (rgbaArray[i] < (comparison[i] - 4))) {
-            match = false;
-          }
+      let match = true
+      let comparison = rgbas[key]
+      for (let i = 0; i < 4; i++) {
+        if ((rgbaArray[i] > (comparison[i] + 4)) || (rgbaArray[i] < (comparison[i] - 4))) {
+          match = false;
         }
-        return match
-      }), 10);
+      }
+      return match
+    }), 10);
   }
 
   const regex = new RegExp('[r|g|b|(|)| ]', 'g')
@@ -53,15 +53,6 @@ function initClicker() {
       }
     }
   });
-
-  // Spinny boy
-  // document.addEventListener('keydown', (event) => {
-  //   const keyName = event.key;
-  //   if (keyName === "`") {
-  //     // do not alert when only Control key is pressed.
-  //     document.querySelector("#grid").className = "speen";
-  //   }
-  // });
 }
 
 export { initClicker };

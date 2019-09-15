@@ -1,6 +1,12 @@
 <div id="stage">
   <!-- The display: none, hides the grid until it's position has been set -->
-  <canvas class="uk-animation-fade" id="grid" height="<%= @grid.height %>" width="<%= @grid.width %>" data-pixel-bits="<%= @grid.pixel_bits %>" data-id="<%= @grid.id %>" data-queue="<%= Oj.dump(@queue) %>" style="display: none;"></canvas>
+  <canvas class="uk-animation-fade"
+          id="grid" height="<%= @grid.height %>"
+          width="<%= @grid.width %>"
+          data-pixel-bits="<%= @grid.pixel_bits %>"
+          data-id="<%= @grid.id %>"
+          data-queue="<%= Oj.dump(@queue) %>"
+          style="display: none;"></canvas>
 </div>
 
 <div class="cols-container">
@@ -8,17 +14,19 @@
 </div>
 
 <div id="alpha-modal" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-        <h2 class="uk-modal-title mb-3 border-bottom pb-2">Welcome to <strong>pixelGrid</strong></h2>
-        <p>
-          You are currently viewing an <mark style="color: blue;">alpha version</mark> of the pixelGrid.<br><br>
+  <div class="uk-modal-dialog uk-modal-body">
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <h2 class="uk-modal-title mb-3 border-bottom pb-2">
+      Welcome to <strong>pixelGrid</strong>
+    </h2>
+    <p>
+      You are currently viewing an <mark style="color: blue;">alpha version</mark> of the pixelGrid.<br><br>
 
-          The website is still being developed so please be bear with us as we are improving it every day. We will be relaunching the site in early October with a partnership with a well known charity and more features that we are sure you will love. If you are interested please sign up for an account now and we will be sure to contact you when we <mark style="color: blue;">officially launch in October.</mark><br><br>
+      The website is still being developed so please be bear with us as we are improving it every day. We will be relaunching the site in early October with a partnership with a well known charity and more features that we are sure you will love. If you are interested please sign up for an account now and we will be sure to contact you when we <mark style="color: blue;">officially launch in October.</mark><br><br>
 
-          Together, we can build the bigger picture.
-        </p>
-    </div>
+      Together, we can build the bigger picture.
+    </p>
+  </div>
 </div>
 
 <script>
@@ -29,7 +37,7 @@
   const userCount = document.getElementById('user-count')
 
   // There has to be a better place to put all this but
-  // it's function and helpful for now.
+  // it's functional and working fine for now.
 
   const canvas = document.getElementById('grid');
   const ctx = canvas.getContext('2d');
@@ -61,9 +69,12 @@
   let click = null;
 
   let currentHover = [];
+
+  // What is this doing?
   setTimeout(function(){
   document.querySelector("#grid").classList = "";
   document.querySelector("body").classList = "";
  }, 2000);
 </script>
+
 <%= render 'shared/dashboard' %>
