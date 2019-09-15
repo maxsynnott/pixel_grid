@@ -34,18 +34,6 @@ ActiveRecord::Schema.define(version: 2019_09_05_092256) do
     t.integer "user_id"
   end
 
-  create_table "placements", force: :cascade do |t|
-    t.string "color"
-    t.bigint "user_id"
-    t.bigint "grid_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "x"
-    t.integer "y"
-    t.index ["grid_id"], name: "index_placements_on_grid_id"
-    t.index ["user_id"], name: "index_placements_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -61,6 +49,4 @@ ActiveRecord::Schema.define(version: 2019_09_05_092256) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "placements", "grids"
-  add_foreign_key "placements", "users"
 end

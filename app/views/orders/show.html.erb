@@ -5,9 +5,8 @@
 <div>
   <h4>Your Orders:</h4>
   <% @order.each do |order| %>
-
     <h3>Order Date: <%= order.created_at %></h3>
     <h4>Amount of Pixels: <%= order.amount %></h4>
-  <h4>Amount paid: <%= order.price %></h4>
-<% end %>
+    <h4>Amount paid: <%= order.price %></h4>
+  <% end %>
 </div>
