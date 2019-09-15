@@ -3,12 +3,11 @@
 <div>
   <h4>Your Orders:</h4>
   <% @order.each do |order| %>
-
     <h3>Order Date: <%= order.created_at %></h3>
     <h4>Amount of Pixels: <%= order.amount %></h4>
-  <h4>Amount paid: <%= order.price * order.amount %></h4>
-  <h4>Status: <%= order.state %></h4>
-  <h4>TOTAL: <%= number_to_currency(((order.price * order.amount) / 100), :unit=>'€') %></h4>
-  <hr>
-<% end %>
+    <h4>Amount paid: <%= order.price * order.amount %></h4>
+    <h4>Status: <%= order.state %></h4>
+    <h4>TOTAL: <%= number_to_currency(((order.price * order.amount) / 100), :unit=>'€') %></h4>
+    <hr>
+  <% end %>
 </div>

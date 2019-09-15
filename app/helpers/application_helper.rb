@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def resource_class
-     User
+    User
   end
 
   def resource
