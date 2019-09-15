@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :grids, only: [:show]
+  resources :grids, only: [:show] do
     resources :group_chats, only: [:create]
   end
 
