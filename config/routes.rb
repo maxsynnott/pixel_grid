@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       post '/grids/:id/place_pixel', to: 'grids#place_pixel'
+      get '/group_chats/:id/messages', to: 'group_chats#messages'
     end
   end
 
