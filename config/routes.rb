@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :grids, only: [:show]
+    resources :group_chats, only: [:create]
+  end
 
   resources :orders, only: [:create, :index] do
     resources :payments, only: [:new, :create]
@@ -18,5 +20,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/grids/:id/place_pixel', to: 'grids#place_pixel'
     end
+  end
+
+  resources :group_chats, only: [:show] do
+    resources :messages, only: [:create]
   end
 end
