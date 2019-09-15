@@ -3,5 +3,6 @@ class GroupChatsController < ApplicationController
   end
 
   def show
+    @group_chat = GroupChat.find(params[:id])
   end
 end

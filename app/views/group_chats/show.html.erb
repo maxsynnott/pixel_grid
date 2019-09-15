@@ -1,2 +1,8 @@
-<h1>GroupChats#show</h1>
-<p>Find me in app/views/group_chats/show.html.erb</p>
+<h1>Group chat: <%= @group_chat.name %></h1>
+
+<h2>Messages:</h2>
+<ul>
+  <% @group_chat.messages.each do |message| %>
+    <li><%= message.content %></li>
+  <% end %>
+</ul>

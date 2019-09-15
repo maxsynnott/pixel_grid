@@ -1,0 +1,8 @@
+<div id="chatbox">
+  <h1><%= @grid.group_chats.first.name %></h1>
+  <ul>
+    <% @grid.group_chats.first.messages.each do |message| %>
+      <li><%= "#{message.user.email}: #{message.content}" %></li>
+    <% end %>
+  </ul>
+</div>
