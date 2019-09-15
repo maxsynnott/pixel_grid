@@ -9,4 +9,6 @@ class GridChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
     ActionCable.server.broadcast("grid_#{params[:grid_id]}", users: ActionCable.server.connections.length)
   end
+
+  # Convert usercount update to seperate method, can't now as don't have wifi to test
 end

@@ -1,6 +1,4 @@
 class Grid < ApplicationRecord
-  has_many :placements, dependent: :destroy
-
   validates :height, presence: true, numericality: { only_integer: true }
   validates :width, presence: true, numericality: { only_integer: true }
 
@@ -17,6 +15,7 @@ class Grid < ApplicationRecord
     save!
   end
 
+  # maybe convert from queue to some form of redis caching
   def update_pixel(xyc)
     batch_update if queue.length >= 100 # Will update pixel to db every x num of pixel_bits
     queue << [xyc[0], xyc[1], xyc[2]] unless xyc.include?(nil)

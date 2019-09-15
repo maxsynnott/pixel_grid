@@ -3,7 +3,7 @@ const initImgPainter = () => {
     ctx.drawImage(image,x,y,1,1,x,y,1,1);
   }
 
-  // input ['activator key', 'image url']
+  // inputs: ['activator key', 'image url']
   const images = [
     ['w', 'https://x8bitrain.github.io/globe.png']
   ]

@@ -22,7 +22,11 @@
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
-  <script>document.addEventListener('gesturestart', function (e) {
-    e.preventDefault();
-});</script>
+
+  <!-- What is this script's purpose? -->
+  <script>
+    document.addEventListener('gesturestart', function (e) {
+      e.preventDefault();
+    });
+  </script>
 </html>
