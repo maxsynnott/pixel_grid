@@ -7,10 +7,6 @@ class GroupChatsController < ApplicationController
     redirect_to grid_path(@group_chat.grid)
   end
 
-  def show
-    @group_chat = GroupChat.find(params[:id])
-  end
-
   private
 
   def group_chat_params

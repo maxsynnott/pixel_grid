@@ -23,6 +23,4 @@ Rails.application.routes.draw do
       post '/group_chats/:id/create_message', to: 'group_chats#create_message'
     end
   end
-
-  resources :group_chats, only: [:show]
 end
