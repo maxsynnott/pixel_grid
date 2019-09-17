@@ -8,7 +8,7 @@ function initColsPicker() {
     `<div style='background-color:rgba(${rgbas[i][0]},${rgbas[i][1]},${rgbas[i][2]},${rgbas[i][3] / 255});'></div>`)
     cols.children[i].addEventListener('click', (event) => {
       color = event.currentTarget.style.backgroundColor;
-      const current = document.querySelector(".active")
+      const current = cols.querySelector(".active")
       if (current) {
         current.classList.remove('active')
       }

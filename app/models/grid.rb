@@ -1,4 +1,6 @@
 class Grid < ApplicationRecord
+  has_many :group_chats
+
   validates :height, presence: true, numericality: { only_integer: true }
   validates :width, presence: true, numericality: { only_integer: true }
 
