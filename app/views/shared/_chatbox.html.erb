@@ -29,9 +29,9 @@
     const currentGroupChatId = document.querySelector('#chatbox .active').dataset.id
 
     fetch(`/api/v1/group_chats/${currentGroupChatId}/create_message`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ content: content })
-        })
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: content })
+    })
   }
 </script>

@@ -4,7 +4,7 @@ class Api::V1::GroupChatsController < Api::V1::BaseController
     messages = {}
     @group_chat.messages.each do |mes|
       messages[mes.id] = { content: mes.content,
-                           author: mes.user.email,
+                           author: mes.user.username,
                            created: mes.created_at }
     end
     render json: messages
