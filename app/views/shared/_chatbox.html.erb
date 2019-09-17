@@ -14,4 +14,24 @@
       <li><%= "#{message.user.username}: #{message.content}" %></li>
     <% end %>
   </ul>
+
+  <form id="message-form">
+    <input id="message-content" type="text">
+    <button id="message-submit">Submit</button>
+  </form>
 </div>
+
+<script>
+  document.getElementById('message-form').onsubmit = (event) => {
+    event.preventDefault();
+
+    const content = document.getElementById('message-content').value
+    const currentGroupChatId = document.querySelector('#chatbox .active').dataset.id
+
+    fetch(`/api/v1/group_chats/${currentGroupChatId}/create_message`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content: content })
+        })
+  }
+</script>

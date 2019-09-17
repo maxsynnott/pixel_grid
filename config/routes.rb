@@ -20,10 +20,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/grids/:id/place_pixel', to: 'grids#place_pixel'
       get '/group_chats/:id/messages', to: 'group_chats#messages'
+      post '/group_chats/:id/create_message', to: 'group_chats#create_message'
     end
   end
 
-  resources :group_chats, only: [:show] do
-    resources :messages, only: [:create]
-  end
+  resources :group_chats, only: [:show]
 end
