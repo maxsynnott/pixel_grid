@@ -7,6 +7,11 @@
         <a href="" class="group" data-id="<%= group.id %>"><%= group.name %></a>
       <% end %>
     </ul>
+    <%= simple_form_for([@grid, GroupChat.new]) do |f| %>
+      <%= f.input :name %>
+      <%= f.submit %>
+    <% end %>
+
   </div>
 
   <ul id ="messages">
