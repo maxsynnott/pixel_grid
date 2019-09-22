@@ -1,6 +1,31 @@
 #chatbox {
   position: absolute;
-  top: 80px;
-  right: 20px;
+  top: 66px;
+  right: 0px;
   background: white;
+  width:300px;
+  height: 100vh;
+}
+
+#messages {
+  font-size: 0.9em;
+}
+
+#chat-input {
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
+  right: -15px;
+  .uk-form-icon {
+    top: 9px;
+  }
+  .uk-form-icon-flip~.uk-input {
+    padding-right: 60px!important;
+  }
+}
+
+#chat-exit {
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }

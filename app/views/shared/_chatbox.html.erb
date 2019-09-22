@@ -1,17 +1,44 @@
-<div id="chatbox">
+<div class="uk-card uk-card-default uk-card-body" id="chatbox">
+
+<a id="chat-exit" href="#chatbox" class="uk-icon-image uk-icon-link" uk-toggle="target: #chatbox; animation: uk-animation-fade" style="
+background-image: url(<%= image_url("cross.svg") %>); color: rgba(255, 255, 255, 0);;">
+ -----
+</a>
+
+
 
   <div id="groups">
-    <h4>Groups:</h4>
-    <ul>
+    <!-- <span>Group chats:</span> -->
+    <div>
+        <ul uk-tab>
       <% @grid.group_chats.each do |group| %>
-        <a href="" class="group" data-id="<%= group.id %>"><%= group.name %></a>
-      <% end %>
-    </ul>
+        <!-- <a href="" class="group" data-id="<%= group.id %>"><%= group.name %></a> -->
+          <li><a href="#"><%= group.name %></a></li>
+          <% end %>
+        </ul>
+
+
+    </div>
   </div>
 
-  <ul id ="messages">
+  <div id ="messages">
     <% @grid.group_chats.first.messages.each do |message| %>
-      <li><%= "#{message.user.email}: #{message.content}" %></li>
+      <span><b><%= "#{message.user.email}:" %></b> <%= "#{message.content}" %></span>
+      <br>
+      <br>
     <% end %>
-  </ul>
+  </div>
+
+  <div id="chat-input">
+    <div class="uk-margin">
+        <div class="uk-inline">
+          <span class="uk-form-icon uk-form-icon-flip uk-icon-image" style="background-image: url(<%= image_url("chevron-right.svg") %>);"></span>
+
+            <input class="uk-input" type="text">
+        </div>
+    </div>
+  </div>
 </div>
+
+
+
