@@ -4,6 +4,7 @@ App[id] = App.cable.subscriptions.create(
   received: (data) => {
     if (data.users) {
       userCount.innerText = data.users
+      userCountM.innerText = data.users
     } else {
       const rgba = rgbas[data.colorIndex];
       const pixelData = new ImageData(Uint8ClampedArray.from(rgba), 1, 1);

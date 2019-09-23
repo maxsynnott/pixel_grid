@@ -51,7 +51,7 @@ button {
 
   @media (max-width: 900px) {
     width: initial;
-    min-width: 350px;
+    min-width: 320px;
     max-width: 550px;
     padding: 40px 40px;
 
@@ -76,11 +76,17 @@ button {
     color: #333;
   }
 
-  #buy-form .uk-input {
+  #buy-form {
+  .uk-input {
     margin: 0;
     height: 70px;
     text-align: center;
     font-weight: 900;
+    }
+  .uk-button-primary {
+    background-color: #1e87f0;
+    color: #fff;
+    }
   }
 
   #logout {
@@ -107,10 +113,8 @@ button {
     }
 
     &::placeholder {
-      /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: #b9b9b9;
       opacity: 1;
-      /* Firefox */
     }
   }
 }
