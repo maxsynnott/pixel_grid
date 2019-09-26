@@ -1,13 +1,11 @@
 <!-- This file should be reworked, it's messy and inefficient -->
-<div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
+<div id="offcanvas-flip-dashboard" uk-offcanvas="flip: true; overlay: true">
   <div class="uk-offcanvas-bar">
     <button class="uk-offcanvas-close" type="button" uk-close></button>
     <% if current_user %>
       <h2>Pixels:
         <%= current_user.pixel_credits %>
       </h2>
-      <br>
-      <br>
       <h4>Add Pixels</h4>
       <div id="buy-btn-container">
         <button class="uk-button uk-button-default" onClick='document.getElementById("amount").value = 10'>10</button>
@@ -21,12 +19,12 @@
           <div uk-tooltip="title: Or enter a custom amount.; pos: left">
             <%= number_field_tag 'amount', '10',  class: "uk-input", placeholder: "Custom Amount", inputmode: "decimal" %>
           </div>
-           <!-- # <%= hidden_field_tag 'price', price = 10 %> -->
-          <%= submit_tag 'Donate!', class: 'btn btn-primary', style: "color:white; width:100%; border-radius: 0;" %>
+          <br>
+           <!-- # <%= hidden_field_tag 'price', price = 10 %>  should be outright removed-->
+          <%= submit_tag 'Donate!', class: 'uk-button uk-button-primary', style: "width:100%; border-radius: 0;" %>
+
         <% end %>
       </div>
-      <br>
-      <br>
       <h3>Donation History</h3>
       <% if @show %>
         <% if @orders.count > 0 %>
